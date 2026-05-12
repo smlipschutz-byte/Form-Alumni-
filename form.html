@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>F&M Men's Soccer Directory</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0f1f3d;
+    --navy-light: #1a3260;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --cream: #faf8f3;
+    --white: #ffffff;
+    --gray: #6b7280;
+    --gray-light: #9ca3af;
+    --border: #e2ddd4;
+    --green: #2d6a4f;
+    --green-bg: #f0fdf4;
+    --green-border: #bbf7d0;
+    --red: #991b1b;
+    --red-bg: #fef2f2;
+    --red-border: #fecaca;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: var(--navy);
+    padding: 18px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 3px solid var(--gold);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+  }
+
+  .logo-badge {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.2);
+    border: 1.5px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .logo-text {
+    font-family: 'Playfair Display', serif;
+    color: #fff;
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+
+  .logo-text span {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-top: 1px;
+  }
+
+  .header-link {
+    color: rgba(255,255,255,0.65);
+    font-size: 0.8rem;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .header-link:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    padding: 48px 24px 56px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    color: #fff;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+
+  .hero h1 em {
+    color: var(--gold);
+    font-style: normal;
+  }
+
+  .hero p {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.95rem;
+    max-width: 440px;
+    margin: 0 auto 32px;
+    line-height: 1.6;
+  }
+
+  /* ── TABS ── */
+  .tab-bar {
+    display: inline-flex;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    padding: 4px;
+    gap: 2px;
+  }
+
+  .tab-btn {
+    padding: 9px 22px;
+    border-radius: 7px;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: transparent;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.02em;
+  }
+
+  .tab-btn.active {
+    background: var(--gold);
+    color: var(--navy);
+  }
+
+  .tab-btn:not(.active):hover {
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+  }
+
+  /* ── MAIN CONTENT ── */
+  .main {
+    max-width: 580px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 36px;
+    box-shadow: 0 2px 20px rgba(15,31,61,0.07);
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    margin-bottom: 6px;
+    color: var(--navy);
+  }
+
+  .card-sub {
+    color: var(--gray);
+    font-size: 0.875rem;
+    margin-bottom: 28px;
+    line-height: 1.55;
+  }
+
+  /* ── FORM FIELDS ── */
+  .field { margin-bottom: 20px; }
+
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  label .req { color: var(--gold); margin-left: 2px; }
+  label .opt { color: var(--gray-light); font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 0.7rem; margin-left: 4px; }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.925rem;
+    color: var(--navy);
+    background: var(--white);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    -webkit-appearance: none;
+  }
+
+  input::placeholder { color: var(--gray-light); }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--navy);
+    box-shadow: 0 0 0 3px rgba(15,31,61,0.06);
+  }
+
+  select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px; }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 24px 0;
+  }
+
+  /* ── BUTTON ── */
+  .btn {
+    width: 100%;
+    padding: 13px;
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.925rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .btn:hover:not(:disabled) { background: var(--navy-light); }
+  .btn:active:not(:disabled) { transform: scale(0.99); }
+  .btn:disabled { background: var(--border); color: var(--gray); cursor: not-allowed; }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--navy);
+    border: 1.5px solid var(--border);
+    margin-top: 10px;
+  }
+
+  .btn-secondary:hover:not(:disabled) { background: var(--cream); }
+
+  /* ── ALERTS ── */
+  .alert {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    margin-bottom: 20px;
+    line-height: 1.45;
+  }
+
+  .alert-error { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-border); }
+  .alert-success { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+  .alert-info { background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
+
+  /* ── SUCCESS STATE ── */
+  .success-state {
+    text-align: center;
+    padding: 12px 0 4px;
+  }
+
+  .success-icon {
+    width: 56px; height: 56px;
+    background: var(--green);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 18px;
+    color: #fff;
+    font-size: 1.4rem;
+  }
+
+  .success-state h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+  }
+
+  .success-state p {
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+
+  /* ── UPDATE FLOW ── */
+  .profile-preview {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 24px;
+  }
+
+  .profile-preview .pname {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    margin-bottom: 3px;
+  }
+
+  .profile-preview .pmeta {
+    font-size: 0.82rem;
+    color: var(--gray);
+  }
+
+  .current-val {
+    font-size: 0.78rem;
+    color: var(--gray-light);
+    margin-top: -14px;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  .current-val strong {
+    color: var(--gray);
+    font-style: normal;
+  }
+
+  /* ── ADMIN ── */
+  .admin-toggle {
+    text-align: center;
+    margin-top: 28px;
+  }
+
+  .admin-toggle button {
+    background: none;
+    border: none;
+    color: var(--gray-light);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+
+  .admin-toggle button:hover { color: var(--gray); }
+
+  .admin-panel {
+    margin-top: 16px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 36px;
+    box-shadow: 0 2px 20px rgba(15,31,61,0.07);
+  }
+
+  .admin-panel h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+  }
+
+  /* ── ADMIN TABLE ── */
+  .table-wrap { overflow-x: auto; margin-top: 20px; }
+  .admin-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+  .admin-table th {
+    text-align: left;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--gray-light);
+    padding: 0 10px 10px;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  .admin-table td {
+    padding: 9px 10px;
+    border-bottom: 1px solid var(--border);
+    color: var(--navy);
+    vertical-align: middle;
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .admin-table tr:last-child td { border-bottom: none; }
+  .admin-table tr:hover td { background: var(--cream); }
+
+  .export-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-decoration: none;
+  }
+  .export-btn:hover { background: var(--navy-light); }
+
+  /* ── SPINNER ── */
+  .spinner {
+    display: inline-block;
+    width: 15px; height: 15px;
+    border: 2px solid rgba(255,255,255,0.35);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    flex-shrink: 0;
+  }
+
+  .spinner-dark {
+    border-color: rgba(15,31,61,0.2);
+    border-top-color: var(--navy);
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .hidden { display: none !important; }
+
+  @media (max-width: 520px) {
+    .site-header { padding: 14px 20px; }
+    .hero h1 { font-size: 1.8rem; }
+    .card { padding: 24px 20px; }
+    .field-row { grid-template-columns: 1fr; }
+    .admin-panel { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a href="https://directoryforfandmmsoc.netlify.app" class="logo">
+    <div class="logo-badge">F&M</div>
+    <div class="logo-text">
+      Men's Soccer
+      <span>Alumni Directory</span>
+    </div>
+  </a>
+  <a href="https://directoryforfandmmsoc.netlify.app" class="header-link">View Directory →</a>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Join the <em>Alumni Network</em></h1>
+  <p>Connect with Diplomats across every era. Add your info or keep your profile current.</p>
+  <div class="tab-bar">
+    <button class="tab-btn active" id="tab-join" onclick="switchTab('join')">+ Join the Directory</button>
+    <button class="tab-btn" id="tab-update" onclick="switchTab('update')">Update My Info</button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- ══════════════════════════════════ JOIN FORM ══════════════════════════════════ -->
+  <div id="view-join">
+
+    <!-- The form -->
+    <div class="card" id="join-form-card">
+      <div class="card-title">Add yourself to the directory</div>
+      <p class="card-sub">Fields marked with <span style="color:var(--gold);">*</span> are required.</p>
+
+      <div id="join-error" class="alert alert-error hidden"></div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="j-name">Full Name <span class="req">*</span></label>
+          <input type="text" id="j-name" placeholder="First Last" autocomplete="name"/>
+        </div>
+        <div class="field">
+          <label for="j-year">Grad Year <span class="req">*</span></label>
+          <input type="number" id="j-year" placeholder="e.g. 2015" min="1900" max="2030"/>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="j-email">Email <span class="req">*</span></label>
+          <input type="email" id="j-email" placeholder="you@example.com" autocomplete="email"/>
+        </div>
+        <div class="field">
+          <label for="j-phone">Phone <span class="req">*</span></label>
+          <input type="tel" id="j-phone" placeholder="215-555-0123" autocomplete="tel"/>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="j-city">City / Region <span class="opt">(optional)</span></label>
+        <input type="text" id="j-city" placeholder="e.g. New York, NY"/>
+      </div>
+
+      <div class="field">
+        <label for="j-job">Current Role & Employer <span class="opt">(optional)</span></label>
+        <input type="text" id="j-job" placeholder="e.g. Associate, Goldman Sachs"/>
+      </div>
+
+      <div class="field">
+        <label for="j-industry">Industry <span class="opt">(optional)</span></label>
+        <select id="j-industry">
+          <option value="">Select industry</option>
+          <option>Finance & Banking</option>
+          <option>Consulting</option>
+          <option>Technology</option>
+          <option>Sales & Business Development</option>
+          <option>Marketing & Advertising</option>
+          <option>Law</option>
+          <option>Medicine & Healthcare</option>
+          <option>Real Estate</option>
+          <option>Government & Public Policy</option>
+          <option>Education</option>
+          <option>Sports & Athletics</option>
+          <option>Non-Profit</option>
+          <option>Entrepreneurship</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="j-linkedin">LinkedIn URL <span class="opt">(optional)</span></label>
+        <input type="url" id="j-linkedin" placeholder="https://linkedin.com/in/yourname"/>
+      </div>
+
+      <button class="btn" id="join-submit-btn" onclick="submitJoin()">Submit My Info</button>
+    </div>
+
+    <!-- Success state -->
+    <div class="card hidden" id="join-success-card">
+      <div class="success-state">
+        <div class="success-icon">✓</div>
+        <h2>You're in the directory!</h2>
+        <p>Thanks for submitting. You can update your info anytime using the "Update My Info" tab.</p>
+        <button class="btn" style="max-width:200px;margin:0 auto;" onclick="resetJoin()">Submit Another</button>
+      </div>
+    </div>
+
+  </div><!-- /view-join -->
+
+
+  <!-- ══════════════════════════════════ UPDATE FLOW ══════════════════════════════════ -->
+  <div id="view-update" class="hidden">
+
+    <!-- Step 1: email lookup -->
+    <div class="card" id="update-step1">
+      <div class="card-title">Find your profile</div>
+      <p class="card-sub">Enter the email address you used when you joined the directory.</p>
+
+      <div id="lookup-error" class="alert alert-error hidden"></div>
+
+      <div class="field">
+        <label for="u-email">Email Address</label>
+        <input type="email" id="u-email" placeholder="you@example.com" autocomplete="email"/>
+      </div>
+
+      <button class="btn" id="lookup-btn" onclick="lookupEmail()">Find My Profile</button>
+    </div>
+
+    <!-- Step 1b: name search fallback -->
+    <div class="card hidden" id="update-step1b">
+      <div class="card-title">Search by name</div>
+      <p class="card-sub">No problem — type your name below and we'll find your profile.</p>
+
+      <div id="name-search-error" class="alert alert-error hidden"></div>
+
+      <div class="field">
+        <label for="u-name-search">Your Name</label>
+        <input type="text" id="u-name-search" placeholder="e.g. Sean Lipschutz" autocomplete="name"/>
+      </div>
+
+      <button class="btn" id="name-search-btn" onclick="lookupByName()">Search</button>
+      <button class="btn btn-secondary" style="margin-top:8px;" onclick="resetUpdate()">← Back</button>
+
+      <!-- Results list -->
+      <div id="name-results" class="hidden" style="margin-top:20px;"></div>
+
+      <!-- No match found — offer to join fresh -->
+      <div id="name-no-match" class="hidden" style="margin-top:20px;text-align:center;">
+        <p style="color:var(--gray);margin-bottom:12px;">No profile found under that name. You can add yourself to the directory instead.</p>
+        <button class="btn" style="max-width:220px;margin:0 auto;" onclick="switchTab('join')">+ Add My Info</button>
+      </div>
+    </div>
+
+    <!-- Step 2: edit fields -->
+    <div class="card hidden" id="update-step2">
+      <div class="card-title">Edit your profile</div>
+      <p class="card-sub">Update any fields below. Leave a field unchanged to keep its current value.</p>
+
+      <div class="profile-preview" id="profile-preview"></div>
+
+      <div id="update-error" class="alert alert-error hidden"></div>
+
+      <div class="field">
+        <label for="u-job">Current Role & Employer</label>
+        <input type="text" id="u-job" placeholder="e.g. Senior Associate, Goldman Sachs"/>
+        <div class="current-val" id="cv-job"></div>
+      </div>
+
+      <div class="field">
+        <label for="u-city">City / Region</label>
+        <input type="text" id="u-city" placeholder="e.g. New York, NY"/>
+        <div class="current-val" id="cv-city"></div>
+      </div>
+
+      <div class="field">
+        <label for="u-industry">Industry</label>
+        <select id="u-industry">
+          <option value="">— keep current —</option>
+          <option>Finance & Banking</option>
+          <option>Consulting</option>
+          <option>Technology</option>
+          <option>Sales & Business Development</option>
+          <option>Marketing & Advertising</option>
+          <option>Law</option>
+          <option>Medicine & Healthcare</option>
+          <option>Real Estate</option>
+          <option>Government & Public Policy</option>
+          <option>Education</option>
+          <option>Sports & Athletics</option>
+          <option>Non-Profit</option>
+          <option>Entrepreneurship</option>
+          <option>Other</option>
+        </select>
+        <div class="current-val" id="cv-industry"></div>
+      </div>
+
+      <div class="field">
+        <label for="u-linkedin">LinkedIn URL</label>
+        <input type="url" id="u-linkedin" placeholder="https://linkedin.com/in/yourname"/>
+        <div class="current-val" id="cv-linkedin"></div>
+      </div>
+
+      <div class="field">
+        <label for="u-phone">Phone</label>
+        <input type="tel" id="u-phone" placeholder="215-555-0123"/>
+        <div class="current-val" id="cv-phone"></div>
+      </div>
+
+      <hr class="divider"/>
+
+      <button class="btn" id="update-submit-btn" onclick="submitUpdate()">Save Changes</button>
+      <button class="btn btn-secondary" onclick="resetUpdate()">← Use a Different Email</button>
+    </div>
+
+    <!-- Step 3: success -->
+    <div class="card hidden" id="update-step3">
+      <div class="success-state">
+        <div class="success-icon">✓</div>
+        <h2>Profile Updated</h2>
+        <p>Your changes are live in the directory immediately.</p>
+        <button class="btn" style="max-width:220px;margin:0 auto 10px;" onclick="window.location.href='https://directoryforfandmmsoc.netlify.app'">View Directory →</button>
+        <button class="btn btn-secondary" style="max-width:220px;margin:0 auto;" onclick="resetUpdate()">Make Another Change</button>
+      </div>
+    </div>
+
+  </div><!-- /view-update -->
+
+
+  <!-- ══════════════════════════════════ ADMIN ══════════════════════════════════ -->
+  <div class="admin-toggle">
+    <button onclick="toggleAdmin()">Admin access</button>
+  </div>
+
+  <div class="admin-panel hidden" id="admin-panel">
+
+    <!-- Login -->
+    <div id="admin-login">
+      <h3>Admin Access</h3>
+      <div id="admin-error" class="alert alert-error hidden"></div>
+      <div class="field">
+        <label for="admin-pw">Password</label>
+        <input type="password" id="admin-pw" placeholder="Enter password"/>
+      </div>
+      <button class="btn" onclick="adminLogin()" style="max-width:160px;">Sign In</button>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="admin-dashboard" class="hidden">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
+        <h3 style="margin:0;">Alumni Directory</h3>
+        <button class="export-btn" onclick="exportCSV()">⬇ Export CSV</button>
+      </div>
+      <div id="admin-loading" class="alert alert-info">Loading records…</div>
+      <div class="table-wrap">
+        <table class="admin-table" id="admin-table">
+          <thead>
+            <tr>
+              <th>Name</th><th>Year</th><th>Email</th><th>Phone</th>
+              <th>City</th><th>Role</th><th>Industry</th><th>LinkedIn</th>
+            </tr>
+          </thead>
+          <tbody id="admin-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+</div><!-- /main -->
+
+<script>
+  /* ─────────────────────────── CONFIG ─────────────────────────── */
+  const TOKEN   = 'paty9STHoCqCZA2Xj.f9aec0cdbe21fc6db0f75bfcb1a9a8d37ae13ad19038efabd1ce7ce03498a334';
+  const BASE    = 'appctjMfn7Ov7ewwC';
+  const TABLE   = 'tblPRNoQGrHOReYNU';
+  const API     = `https://api.airtable.com/v0/${BASE}/${TABLE}`;
+  const HEADERS = { 'Authorization': `Bearer ${TOKEN}`, 'Content-Type': 'application/json' };
+  const ADMIN_PASSWORD = 'Diplomats2024';
+
+  const F = {
+    name:     'fldGciOGIxSSpkYGD',
+    email:    'fldzdnoIjChx4T6IL',
+    gradYear: 'fldh7SeT49ptABR0e',
+    job:      'fld0wMulkpBW3upOb',
+    phone:    'fldutJdZ5rloucWAc',
+    city:     'fld1mPx0Ps9nk5Vab',
+    industry: 'fldDjOOdOC1OSNLia',
+    linkedin: 'fld9dQDC9ZV9fs6ky',
+  };
+
+  // REST API GET returns fields keyed by NAME not ID
+  const FN = {
+    name:     'Name',
+    email:    'Email',
+    gradYear: 'Grad Year',
+    job:      'Job',
+    phone:    'Phone',
+    city:     'City',
+    industry: 'Industry',
+    linkedin: 'LinkedIn',
+  };
+
+  /* ─────────────────────────── TAB SWITCHING ─────────────────────────── */
+  function switchTab(tab) {
+    document.getElementById('view-join').classList.toggle('hidden', tab !== 'join');
+    document.getElementById('view-update').classList.toggle('hidden', tab !== 'update');
+    document.getElementById('tab-join').classList.toggle('active', tab === 'join');
+    document.getElementById('tab-update').classList.toggle('active', tab === 'update');
+  }
+
+  /* ─────────────────────────── HELPERS ─────────────────────────── */
+  function showEl(id)  { document.getElementById(id).classList.remove('hidden'); }
+  function hideEl(id)  { document.getElementById(id).classList.add('hidden'); }
+  function setText(id, txt) { const el=document.getElementById(id); el.textContent=txt; }
+
+  function showAlert(id, msg, type='error') {
+    const el = document.getElementById(id);
+    el.className = `alert alert-${type}`;
+    el.textContent = msg;
+    el.classList.remove('hidden');
+  }
+
+  function hideAlert(id) { document.getElementById(id).classList.add('hidden'); }
+
+  function setLoading(btnId, loading, defaultText) {
+    const btn = document.getElementById(btnId);
+    btn.disabled = loading;
+    btn.innerHTML = loading
+      ? `<span class="spinner"></span> Loading…`
+      : defaultText;
+  }
+
+  /* ─────────────────────────── JOIN FORM ─────────────────────────── */
+  async function submitJoin() {
+    hideAlert('join-error');
+    const name  = document.getElementById('j-name').value.trim();
+    const year  = document.getElementById('j-year').value.trim();
+    const email = document.getElementById('j-email').value.trim();
+    const phone = document.getElementById('j-phone').value.trim();
+
+    if (!name || !year || !email || !phone) {
+      showAlert('join-error', 'Please fill in all required fields (Name, Grad Year, Email, Phone).');
+      return;
+    }
+
+    setLoading('join-submit-btn', true, 'Submit My Info');
+
+    const fields = {
+      [F.name]:  name,
+      [F.email]: email,
+      [F.phone]: phone,
+      [F.gradYear]: parseInt(year),
+    };
+
+    const city     = document.getElementById('j-city').value.trim();
+    const job      = document.getElementById('j-job').value.trim();
+    const industry = document.getElementById('j-industry').value;
+    const linkedin = document.getElementById('j-linkedin').value.trim();
+
+    if (city)     fields[F.city]     = city;
+    if (job)      fields[F.job]      = job;
+    if (industry) fields[F.industry] = industry;
+    if (linkedin) fields[F.linkedin] = linkedin;
+
+    try {
+      // Check if email already exists
+      const checkUrl = `${API}?filterByFormula=LOWER({${F.email}})=LOWER("${email.replace(/"/g,'')}")&fields[]=${F.name}`;
+      const checkRes = await fetch(checkUrl, { headers: { 'Authorization': `Bearer ${TOKEN}` } });
+      const checkData = await checkRes.json();
+
+      let res;
+      if (checkData.records && checkData.records.length > 0) {
+        // Email exists — update the record
+        const recId = checkData.records[0].id;
+        res = await fetch(`${API}/${recId}`, {
+          method: 'PATCH',
+          headers: HEADERS,
+          body: JSON.stringify({ fields })
+        });
+      } else {
+        // Create new record
+        res = await fetch(API, {
+          method: 'POST',
+          headers: HEADERS,
+          body: JSON.stringify({ fields })
+        });
+      }
+
+      if (!res.ok) throw new Error('Submission failed');
+
+      hideEl('join-form-card');
+      showEl('join-success-card');
+
+    } catch(e) {
+      showAlert('join-error', 'Something went wrong. Please try again.');
+    }
+
+    setLoading('join-submit-btn', false, 'Submit My Info');
+  }
+
+  function resetJoin() {
+    ['j-name','j-year','j-email','j-phone','j-city','j-job','j-linkedin'].forEach(id => {
+      document.getElementById(id).value = '';
+    });
+    document.getElementById('j-industry').value = '';
+    hideAlert('join-error');
+    hideEl('join-success-card');
+    showEl('join-form-card');
+  }
+
+  // Allow enter on form fields
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && document.activeElement.closest('#join-form-card')) {
+      submitJoin();
+    }
+  });
+
+  /* ─────────────────────────── UPDATE FLOW ─────────────────────────── */
+  let currentRecord = null;
+
+  async function lookupEmail() {
+    hideAlert('lookup-error');
+    const email = document.getElementById('u-email').value.trim();
+    if (!email) { showAlert('lookup-error', 'Please enter your email address.'); return; }
+
+    setLoading('lookup-btn', true, 'Find My Profile');
+
+    try {
+      const url = `${API}?filterByFormula=LOWER({${F.email}})=LOWER("${email.replace(/"/g,'')}")&fields[]=${F.name}&fields[]=${F.email}&fields[]=${F.gradYear}&fields[]=${F.job}&fields[]=${F.phone}&fields[]=${F.city}&fields[]=${F.industry}&fields[]=${F.linkedin}`;
+      const res  = await fetch(url, { headers: { 'Authorization': `Bearer ${TOKEN}` } });
+      const data = await res.json();
+
+      if (!data.records || data.records.length === 0) {
+        showAlert('lookup-error', `No profile found for that email.`);
+        if (!document.getElementById('try-name-btn')) {
+          const btn = document.createElement('button');
+          btn.id = 'try-name-btn';
+          btn.className = 'btn btn-secondary';
+          btn.style.marginTop = '10px';
+          btn.textContent = 'Search by name instead \u2192';
+          btn.onclick = () => { hideEl('update-step1'); showEl('update-step1b'); };
+          document.getElementById('lookup-error').after(btn);
+        }
+        setLoading('lookup-btn', false, 'Find My Profile');
+        return;
+      }
+
+      currentRecord = data.records[0];
+      const f = currentRecord.fields;
+
+      // REST API keys by field NAME not ID
+      const gradText = f[FN.gradYear] ? `Class of '${String(f[FN.gradYear]).slice(-2)}` : '';
+      document.getElementById('profile-preview').innerHTML = `
+        <div class="pname">${f[FN.name] || ''}</div>
+        <div class="pmeta">${[gradText, f[FN.job]].filter(Boolean).join(' · ') || 'No role on file'}</div>
+      `;
+
+      function setCurrent(elId, val) {
+        const el = document.getElementById(elId);
+        el.innerHTML = val ? `Current: <strong>${val}</strong>` : '<em>Not set</em>';
+      }
+
+      setCurrent('cv-job',      f[FN.job]);
+      setCurrent('cv-city',     f[FN.city]);
+      setCurrent('cv-industry', f[FN.industry]);
+      setCurrent('cv-linkedin', f[FN.linkedin]);
+      setCurrent('cv-phone',    f[FN.phone]);
+
+      document.getElementById('u-job').value      = f[FN.job]      || '';
+      document.getElementById('u-city').value     = f[FN.city]     || '';
+      document.getElementById('u-industry').value = f[FN.industry] || '';
+      document.getElementById('u-linkedin').value = f[FN.linkedin] || '';
+      document.getElementById('u-phone').value    = f[FN.phone]    || '';
+
+      hideEl('update-step1');
+      showEl('update-step2');
+
+    } catch(e) {
+      showAlert('lookup-error', 'Something went wrong. Please try again.');
+    }
+
+    setLoading('lookup-btn', false, 'Find My Profile');
+  }
+
+  async function lookupByName() {
+    hideAlert('name-search-error');
+    hideEl('name-results');
+    hideEl('name-no-match');
+    const name = document.getElementById('u-name-search').value.trim();
+    if (!name) { showAlert('name-search-error', 'Please enter your name.'); return; }
+
+    setLoading('name-search-btn', true, 'Search');
+
+    try {
+      const formula = encodeURIComponent(`SEARCH(LOWER("${name.replace(/"/g,'')}"), LOWER({${F.name}}))`);
+      const url = `${API}?filterByFormula=${formula}&fields[]=${F.name}&fields[]=${F.email}&fields[]=${F.gradYear}&fields[]=${F.job}&fields[]=${F.phone}&fields[]=${F.city}&fields[]=${F.industry}&fields[]=${F.linkedin}`;
+      const res  = await fetch(url, { headers: { 'Authorization': `Bearer ${TOKEN}` } });
+      const data = await res.json();
+
+      if (!data.records || data.records.length === 0) {
+        showEl('name-no-match');
+      } else {
+        const resultsEl = document.getElementById('name-results');
+        resultsEl.innerHTML = `
+          <p style="font-size:0.85em;color:var(--gray);margin-bottom:10px;">Select your profile:</p>
+          ${data.records.map(r => {
+            const f = r.fields;
+            const year = f[FN.gradYear] ? `Class of '${String(f[FN.gradYear]).slice(-2)}` : '';
+            const job  = f[FN.job] || '';
+            return `<button class="btn btn-secondary" style="text-align:left;margin-bottom:8px;padding:12px 16px;" onclick="selectNameResult('${r.id}')">
+              <strong>${f[FN.name] || ''}</strong>
+              <span style="font-size:0.8em;color:var(--gray);display:block;margin-top:2px;">${[year, job].filter(Boolean).join(' · ') || 'No details on file'}</span>
+            </button>`;
+          }).join('')}
+        `;
+        // Store records for later selection
+        window._nameResults = data.records;
+        showEl('name-results');
+      }
+    } catch(e) {
+      showAlert('name-search-error', 'Something went wrong. Please try again.');
+    }
+
+    setLoading('name-search-btn', false, 'Search');
+  }
+
+  function selectNameResult(recordId) {
+    const record = window._nameResults.find(r => r.id === recordId);
+    if (!record) return;
+    currentRecord = record;
+    const f = record.fields;
+
+    const gradText = f[FN.gradYear] ? `Class of '${String(f[FN.gradYear]).slice(-2)}` : '';
+    document.getElementById('profile-preview').innerHTML = `
+      <div class="pname">${f[FN.name] || ''}</div>
+      <div class="pmeta">${[gradText, f[FN.job]].filter(Boolean).join(' \u00b7 ') || 'No role on file'}</div>
+    `;
+
+    function setCurrent(elId, val) {
+      const el = document.getElementById(elId);
+      el.innerHTML = val ? `Current: <strong>${val}</strong>` : '<em>Not set</em>';
+    }
+    setCurrent('cv-job',      f[FN.job]);
+    setCurrent('cv-city',     f[FN.city]);
+    setCurrent('cv-industry', f[FN.industry]);
+    setCurrent('cv-linkedin', f[FN.linkedin]);
+    setCurrent('cv-phone',    f[FN.phone]);
+
+    document.getElementById('u-job').value      = f[FN.job]      || '';
+    document.getElementById('u-city').value     = f[FN.city]     || '';
+    document.getElementById('u-industry').value = f[FN.industry] || '';
+    document.getElementById('u-linkedin').value = f[FN.linkedin] || '';
+    document.getElementById('u-phone').value    = f[FN.phone]    || '';
+
+    hideEl('update-step1b');
+    showEl('update-step2');
+  }
+
+  async function submitUpdate() {
+    if (!currentRecord) return;
+    hideAlert('update-error');
+
+    const fields = {};
+    const job      = document.getElementById('u-job').value.trim();
+    const city     = document.getElementById('u-city').value.trim();
+    const industry = document.getElementById('u-industry').value;
+    const linkedin = document.getElementById('u-linkedin').value.trim();
+    const phone    = document.getElementById('u-phone').value.trim();
+
+    if (job)      fields[F.job]      = job;
+    if (city)     fields[F.city]     = city;
+    if (industry) fields[F.industry] = industry;
+    if (linkedin) fields[F.linkedin] = linkedin;
+    if (phone)    fields[F.phone]    = phone;
+
+    if (Object.keys(fields).length === 0) {
+      showAlert('update-error', 'No changes detected — update at least one field before saving.');
+      return;
+    }
+
+    setLoading('update-submit-btn', true, 'Save Changes');
+
+    try {
+      const res = await fetch(`${API}/${currentRecord.id}`, {
+        method: 'PATCH',
+        headers: HEADERS,
+        body: JSON.stringify({ fields })
+      });
+      if (!res.ok) throw new Error();
+      hideEl('update-step2');
+      showEl('update-step3');
+    } catch(e) {
+      showAlert('update-error', 'Something went wrong saving your changes. Please try again.');
+    }
+
+    setLoading('update-submit-btn', false, 'Save Changes');
+  }
+
+  function resetUpdate() {
+    currentRecord = null;
+    window._nameResults = [];
+    document.getElementById('u-email').value = '';
+    document.getElementById('u-name-search').value = '';
+    hideAlert('lookup-error');
+    hideAlert('name-search-error');
+    hideEl('name-results');
+    hideEl('name-no-match');
+    const tryNameBtn = document.getElementById('try-name-btn');
+    if (tryNameBtn) tryNameBtn.remove();
+    hideEl('update-step1b');
+    hideEl('update-step2');
+    hideEl('update-step3');
+    showEl('update-step1');
+  }
+
+  document.getElementById('u-email').addEventListener('keydown', e => {
+    if (e.key === 'Enter') lookupEmail();
+  });
+
+  document.getElementById('u-name-search').addEventListener('keydown', e => {
+    if (e.key === 'Enter') lookupByName();
+  });
+
+  /* ─────────────────────────── ADMIN ─────────────────────────── */
+  let adminLoggedIn = false;
+  let adminRecords  = [];
+
+  function toggleAdmin() {
+    const panel = document.getElementById('admin-panel');
+    panel.classList.toggle('hidden');
+  }
+
+  async function adminLogin() {
+    const pw = document.getElementById('admin-pw').value;
+    if (pw !== ADMIN_PASSWORD) {
+      showAlert('admin-error', 'Incorrect password.');
+      return;
+    }
+    hideAlert('admin-error');
+    hideEl('admin-login');
+    showEl('admin-dashboard');
+    if (!adminLoggedIn) {
+      adminLoggedIn = true;
+      await loadAdminRecords();
+    }
+  }
+
+  async function loadAdminRecords() {
+    document.getElementById('admin-loading').classList.remove('hidden');
+
+    let records = [], offset = null;
+    do {
+      const url = `${API}?sort[0][field]=Name&sort[0][direction]=asc` + (offset ? `&offset=${offset}` : '');
+      const res  = await fetch(url, { headers: { 'Authorization': `Bearer ${TOKEN}` } });
+      const data = await res.json();
+      if (data.records) records = records.concat(data.records);
+      offset = data.offset || null;
+    } while (offset);
+
+    adminRecords = records;
+    hideEl('admin-loading');
+    renderAdminTable();
+  }
+
+  function renderAdminTable() {
+    const rows = adminRecords.map(r => {
+      const f = r.fields;
+      const year = f[F.gradYear] ? `'${String(f[F.gradYear]).slice(-2)}` : '—';
+      const li   = f[F.linkedin] ? `<a href="${f[F.linkedin]}" target="_blank" style="color:var(--navy);">↗</a>` : '—';
+      return `<tr>
+        <td><strong>${f[F.name]||'—'}</strong></td>
+        <td>${year}</td>
+        <td><a href="mailto:${f[F.email]||''}" style="color:var(--navy);text-decoration:none;">${f[F.email]||'—'}</a></td>
+        <td>${f[F.phone]||'—'}</td>
+        <td>${f[F.city]||'—'}</td>
+        <td>${f[F.job]||'—'}</td>
+        <td>${f[F.industry]||'—'}</td>
+        <td>${li}</td>
+      </tr>`;
+    }).join('');
+    document.getElementById('admin-tbody').innerHTML = rows;
+  }
+
+  function exportCSV() {
+    const headers = ['Name','Grad Year','Email','Phone','City','Role','Industry','LinkedIn'];
+    const rows = adminRecords.map(r => {
+      const f = r.fields;
+      return [f[F.name],f[F.gradYear],f[F.email],f[F.phone],f[F.city],f[F.job],f[F.industry],f[F.linkedin]]
+        .map(v => `"${(v||'').toString().replace(/"/g,'""')}"`)
+        .join(',');
+    });
+    const csv  = [headers.join(','), ...rows].join('\n');
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href = url; a.download = 'fm-soccer-alumni.csv';
+    a.click(); URL.revokeObjectURL(url);
+  }
+
+  document.getElementById('admin-pw').addEventListener('keydown', e => {
+    if (e.key === 'Enter') adminLogin();
+  });
+</script>
+</body>
+</html>
